@@ -709,13 +709,18 @@ background: rgba(0, 0, 0, 0.5);
 z-index: 1000;
 display: none;
 backdrop-filter: blur(4px);
+transition: opacity 0.3s ease;
 }
 
 .hamburger-menu-overlay.active {
 display: flex;
 align-items: flex-start;
-justify-content: flex-start;
+justify-content: flex-end;
 padding: 20px;
+}
+
+.hamburger-menu-overlay.closing {
+opacity: 0;
 }
 
 .hamburger-menu {
@@ -728,6 +733,10 @@ max-width: 320px;
 animation: menuSlideIn 0.3s ease;
 }
 
+.hamburger-menu.closing {
+animation: menuSlideOut 0.3s ease;
+}
+
 @keyframes menuSlideIn {
 from {
   opacity: 0;
@@ -736,6 +745,17 @@ from {
 to {
   opacity: 1;
   transform: translateY(0) scale(1);
+}
+}
+
+@keyframes menuSlideOut {
+from {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+to {
+  opacity: 0;
+  transform: translateY(-20px) scale(0.95);
 }
 }
 
@@ -3948,10 +3968,17 @@ function openHamburgerMenu() {
 
 function closeHamburgerMenu() {
   const menu = document.getElementById('hamburgerMenu');
-  menu.classList.remove('active');
+  const menuContent = menu.querySelector('.hamburger-menu');
   
+  // Schließ-Animation für Overlay und Menü starten
+  menu.classList.add('closing');
+  menuContent.classList.add('closing');
+  
+  // Nach Animation das Overlay entfernen
   setTimeout(() => {
+    menu.classList.remove('active', 'closing');
     menu.style.display = 'none';
+    menuContent.classList.remove('closing');
   }, 300);
   
   // Event listener entfernen
