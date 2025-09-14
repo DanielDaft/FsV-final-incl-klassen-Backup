@@ -4523,7 +4523,6 @@ function renderStudentList() {
   if (students.length === 0) {
     html += `
       <div class="empty-class-state">
-        <div class="empty-icon">${getClassIcon(currentClass)}</div>
         <div class="empty-title">Noch keine Schüler in Klasse ${classDisplayName}</div>
         <div class="empty-description">${getClassDescription(currentClass)}</div>
         <button class="btn-elegant primary" onclick="showNewStudentDialog()">
