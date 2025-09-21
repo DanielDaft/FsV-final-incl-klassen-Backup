@@ -7551,7 +7551,92 @@ function renderBECategoryHeader(studentId, category, key, percentage, treatedIte
   }
 }
 
-// HAUPT-KATEGORIE-HEADER FUNKTION - KLASSENSPEZIFISCH
+// 🚗 KLASSE-B-SPEZIFISCHE LOGIK (ORIGINAL)
+function renderBCategoryHeader(studentId, category, key, percentage, treatedItems, totalItems) {
+  if (key === 'grundstufe' || key === 'aufbaustufe' || key === 'leistungsstufe' || key === 'grundfahraufgaben') {
+    return renderCategoryHeaderWithCircles(studentId, category, key, percentage, treatedItems, totalItems);
+  } else if (key === 'uberlandfahrten') {
+    return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 5);
+  } else if (key === 'autobahn') {
+    return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 4);
+  } else if (key === 'dammerung_dunkelheit') {
+    return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 3);
+  } else {
+    return renderStandardHeader(category, percentage, treatedItems, totalItems);
+  }
+}
+
+// 🏍️ KLASSE-A-SPEZIFISCHE LOGIK (KOPIE VON B)
+function renderACategoryHeader(studentId, category, key, percentage, treatedItems, totalItems) {
+  if (key === 'grundstufe' || key === 'aufbaustufe' || key === 'leistungsstufe' || key === 'grundfahraufgaben') {
+    return renderCategoryHeaderWithCircles(studentId, category, key, percentage, treatedItems, totalItems);
+  } else if (key === 'uberlandfahrten') {
+    return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 5);
+  } else if (key === 'autobahn') {
+    return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 4);
+  } else if (key === 'dammerung_dunkelheit') {
+    return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 3);
+  } else {
+    return renderStandardHeader(category, percentage, treatedItems, totalItems);
+  }
+}
+
+// 🚛 KLASSE-C-SPEZIFISCHE LOGIK (KOPIE VON B)  
+function renderCCategoryHeader(studentId, category, key, percentage, treatedItems, totalItems) {
+  if (key === 'grundstufe' || key === 'aufbaustufe' || key === 'leistungsstufe' || key === 'grundfahraufgaben') {
+    return renderCategoryHeaderWithCircles(studentId, category, key, percentage, treatedItems, totalItems);
+  } else if (key === 'uberlandfahrten') {
+    return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 5);
+  } else if (key === 'autobahn') {
+    return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 4);
+  } else if (key === 'dammerung_dunkelheit') {
+    return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 3);
+  } else {
+    return renderStandardHeader(category, percentage, treatedItems, totalItems);
+  }
+}
+
+// 🚚 KLASSE-CE-SPEZIFISCHE LOGIK (KOPIE VON B)
+function renderCECategoryHeader(studentId, category, key, percentage, treatedItems, totalItems) {
+  if (key === 'grundstufe' || key === 'aufbaustufe' || key === 'leistungsstufe' || key === 'grundfahraufgaben') {
+    return renderCategoryHeaderWithCircles(studentId, category, key, percentage, treatedItems, totalItems);
+  } else if (key === 'uberlandfahrten') {
+    return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 5);
+  } else if (key === 'autobahn') {
+    return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 4);
+  } else if (key === 'dammerung_dunkelheit') {
+    return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 3);
+  } else {
+    return renderStandardHeader(category, percentage, treatedItems, totalItems);
+  }
+}
+
+// 🚛 KLASSE-BE-SPEZIFISCHE LOGIK (MIT KORREKTEN PS-ZAHLEN)
+function renderBECategoryHeader(studentId, category, key, percentage, treatedItems, totalItems) {
+  // BE-spezifische Grüne Kreise
+  if (key === 'grundstufe' || key === 'aufbaustufe' || key === 'leistungsstufe' || key === 'grundfahraufgaben' || key === 'wichtige_fahraufgaben') {
+    return renderCategoryHeaderWithCircles(studentId, category, key, percentage, treatedItems, totalItems);
+  }
+  // BE-spezifische PS-Kreise mit KORREKTEN ZAHLEN
+  else if (key === 'uberlandfahrten') {
+    // BE: 3 PS-Kreise (nicht 5!)
+    return renderBESpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 3);
+  } 
+  else if (key === 'autobahn') {
+    // BE: 1 PS-Kreis (nicht 4!)
+    return renderBESpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 1);
+  } 
+  else if (key === 'dammerung_dunkelheit') {
+    // BE: 1 PS-Kreis (nicht 3!)
+    return renderBESpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 1);
+  }
+  // Alle anderen BE-Kategorien: Standard
+  else {
+    return renderStandardHeader(category, percentage, treatedItems, totalItems);
+  }
+}
+
+// 📱 HAUPT-ROUTER-FUNKTION (KEINE EIGENE LOGIK MEHR!)
 function renderCategoryHeader(studentId, category, key, percentage, treatedItems, totalItems) {
   // 🚛 BE-KLASSE: Eigene separate Logik
   if (currentClass === 'BE') {
