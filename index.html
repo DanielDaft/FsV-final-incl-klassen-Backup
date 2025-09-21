@@ -5860,7 +5860,7 @@ function formatFullAddress(student) {
 function generatePrintCategories(studentId) {
   const progress = StorageManager.getProgressForStudent(studentId, currentClass);
   
-  return Object.entries(TRAINING_CATEGORIES).map(([categoryKey, category]) => {
+  return Object.entries(getTrainingCategoriesForClass(currentClass)).map(([categoryKey, category]) => {
     const categoryProgress = progress[categoryKey] || {};
     
     return `
