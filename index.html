@@ -7532,24 +7532,12 @@ function renderBECategoryHeader(studentId, category, key, percentage, treatedIte
 
 // HAUPT-KATEGORIE-HEADER FUNKTION - KLASSENSPEZIFISCH
 function renderCategoryHeader(studentId, category, key, percentage, treatedItems, totalItems) {
-  // BE-spezifische PS-Kreis-Anzahl - KORRIGIERT!
+  // 🚛 BE-KLASSE: Eigene separate Logik
   if (currentClass === 'BE') {
-    if (key === 'grundstufe' || key === 'aufbaustufe' || key === 'leistungsstufe' || key === 'grundfahraufgaben' || key === 'wichtige_fahraufgaben') {
-      // Grüne UE-Kreise für diese BE-Kategorien
-      return renderCategoryHeaderWithCircles(studentId, category, key, percentage, treatedItems, totalItems);
-    } else if (key === 'uberlandfahrten') {
-      // Bundes-/Landstraßen: 3 PS-Kreise statt 5
-      return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 3);
-    } else if (key === 'autobahn') {
-      // Autobahnen: 1 PS-Kreis statt 4
-      return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 1);
-    } else if (key === 'dammerung_dunkelheit') {
-      // Dämmerung: 1 PS-Kreis statt 3
-      return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 1);
-    }
+    return renderBECategoryHeader(studentId, category, key, percentage, treatedItems, totalItems);
   }
   
-  // Standard Klassen (B, A, usw.) - UNVERÄNDERT
+  // 🚗 ALLE ANDEREN KLASSEN (B, A, C, etc.): Original-Logik
   if (key === 'grundstufe' || key === 'aufbaustufe' || key === 'leistungsstufe' || key === 'grundfahraufgaben') {
     return renderCategoryHeaderWithCircles(studentId, category, key, percentage, treatedItems, totalItems);
   } else if (key === 'uberlandfahrten') {
