@@ -7579,77 +7579,7 @@ function renderBEPSCircles(studentId, categoryKey, count, maxCount) {
   return '';
 }
 
-// 🔄 BE-KREIS EVENT HANDLERS
 
-// Grüne Kreise für BE hinzufügen
-function addBECircle(studentId, categoryKey) {
-  const progress = StorageManager.getProgressForStudent(studentId, currentClass);
-  if (!progress[`${categoryKey}_circles`]) {
-    progress[`${categoryKey}_circles`] = {};
-  }
-  
-  const currentCount = progress[`${categoryKey}_circles`].count || 0;
-  progress[`${categoryKey}_circles`].count = currentCount + 1;
-  
-  StorageManager.saveProgressForStudent(studentId, progress, currentClass);
-  updateCategoryHeaderOnly(studentId, categoryKey);
-}
-
-// Grüne Kreise für gemischte BE-Kategorien hinzufügen
-function addBEGreenCircle(studentId, categoryKey) {
-  const progress = StorageManager.getProgressForStudent(studentId, currentClass);
-  if (!progress[`${categoryKey}_circles`]) {
-    progress[`${categoryKey}_circles`] = {};
-  }
-  
-  const currentCount = progress[`${categoryKey}_circles`].green || 0;
-  progress[`${categoryKey}_circles`].green = currentCount + 1;
-  
-  StorageManager.saveProgressForStudent(studentId, progress, currentClass);
-  updateCategoryHeaderOnly(studentId, categoryKey);
-}
-
-// PS-Kreise für BE hinzufügen
-function addBEPSCircle(studentId, categoryKey) {
-  const progress = StorageManager.getProgressForStudent(studentId, currentClass);
-  if (!progress[`${categoryKey}_circles`]) {
-    progress[`${categoryKey}_circles`] = {};
-  }
-  
-  const currentCount = progress[`${categoryKey}_circles`].ps || 0;
-  progress[`${categoryKey}_circles`].ps = currentCount + 1;
-  
-  StorageManager.saveProgressForStudent(studentId, progress, currentClass);
-  updateCategoryHeaderOnly(studentId, categoryKey);
-}
-
-// Grüne Kreise für BE entfernen
-function removeBEGreenCircle(studentId, categoryKey, index) {
-  const progress = StorageManager.getProgressForStudent(studentId, currentClass);
-  if (progress[`${categoryKey}_circles`]) {
-    if (progress[`${categoryKey}_circles`].count !== undefined) {
-      // Einfache grüne Kreise
-      progress[`${categoryKey}_circles`].count = Math.max(0, (progress[`${categoryKey}_circles`].count || 1) - 1);
-    } else {
-      // Gemischte Kreise
-      progress[`${categoryKey}_circles`].green = Math.max(0, (progress[`${categoryKey}_circles`].green || 1) - 1);
-    }
-  }
-  
-  StorageManager.saveProgressForStudent(studentId, progress, currentClass);
-  updateCategoryHeaderOnly(studentId, categoryKey);
-}
-
-// PS-Kreise für BE entfernen
-function removeBEPSCircle(studentId, categoryKey, index) {
-  const progress = StorageManager.getProgressForStudent(studentId, currentClass);
-  if (progress[`${categoryKey}_circles`]) {
-    progress[`${categoryKey}_circles`].ps = Math.max(0, (progress[`${categoryKey}_circles`].ps || 1) - 1);
-  }
-  
-  StorageManager.saveProgressForStudent(studentId, progress, currentClass);
-  updateCategoryHeaderOnly(studentId, categoryKey);
-}
 
 </script>
 </body>
