@@ -3188,6 +3188,15 @@ const BE_TRAINING_CATEGORIES = {
 // ⚠️ DEMO-DATEN ENTFERNT - KEINE AUTOMATISCHEN SCHÜLER MEHR
 const DEMO_STUDENTS = [];
 
+// FUNKTION: Kategorien für spezifische Klassen abrufen
+function getTrainingCategoriesForClass(className) {
+  if (className === 'BE') {
+    return BE_TRAINING_CATEGORIES;
+  }
+  // Für alle anderen Klassen die Standard-Kategorien
+  return TRAINING_CATEGORIES;
+}
+
 // SICHERE MIGRATION: Entferne NUR spezifische Demo-Daten (EINMALIG)
 function removeOldDemoData() {
   // Prüfe ob bereits bereinigt wurde
