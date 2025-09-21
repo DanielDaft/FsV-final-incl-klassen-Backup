@@ -5736,10 +5736,20 @@ function toggleBlueCircle(studentId, categoryKey, index) {
   const progress = StorageManager.getProgressForStudent(studentId, currentClass);
   const blueKey = `${categoryKey}_blue_circles`;
   
-  // Bestimme Anzahl der Kreise basierend auf Kategorie
-  let circleCount = 5; // Standard: Überlandfahrten
-  if (categoryKey === 'autobahn') circleCount = 4;
-  if (categoryKey === 'dammerung_dunkelheit') circleCount = 3;
+  // 🔧 KLASSENSPEZIFISCHE KREIS-ANZAHL BESTIMMUNG
+  let circleCount = 5; // Standard für B-Klassen
+  
+  if (currentClass === 'BE') {
+    // BE-spezifische Zahlen
+    if (categoryKey === 'uberlandfahrten') circleCount = 3;        // BE: 3 statt 5
+    else if (categoryKey === 'autobahn') circleCount = 1;          // BE: 1 statt 4  
+    else if (categoryKey === 'dammerung_dunkelheit') circleCount = 1; // BE: 1 statt 3
+  } else {
+    // Alle anderen Klassen (B, A, C, etc.): Original-Zahlen
+    if (categoryKey === 'uberlandfahrten') circleCount = 5;
+    else if (categoryKey === 'autobahn') circleCount = 4;
+    else if (categoryKey === 'dammerung_dunkelheit') circleCount = 3;
+  }
   
   if (!progress[blueKey]) progress[blueKey] = Array(circleCount).fill(false);
   
