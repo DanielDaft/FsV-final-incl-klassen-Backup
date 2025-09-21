@@ -5190,23 +5190,7 @@ function renderTrainingProgress(student) {
     html += `
       <div class="training-section">
         <div class="training-header ${key}" onclick="toggleTrainingSection('${key}')">
-          ${(key === 'grundstufe' || key === 'aufbaustufe' || key === 'leistungsstufe' || key === 'grundfahraufgaben') ? renderCategoryHeaderWithCircles(student.id, category, key, percentage, treatedItems, totalItems) : 
-            (key === 'uberlandfahrten') ? renderSpecialFahrtenHeader(student.id, category, key, percentage, treatedItems, totalItems, 5) :
-            (key === 'autobahn') ? renderSpecialFahrtenHeader(student.id, category, key, percentage, treatedItems, totalItems, 4) :
-            (key === 'dammerung_dunkelheit') ? renderSpecialFahrtenHeader(student.id, category, key, percentage, treatedItems, totalItems, 3) : `
-            <div class="training-info-with-circles">
-              <div class="training-info">
-                <h3>${category.name}</h3>
-                ${category.subtitle ? `<div class="training-subtitle">${category.subtitle}</div>` : ''}
-              </div>
-            </div>
-            <div class="training-progress">
-              <div class="progress-circle"></div>
-              <div class="progress-text">${percentage}%</div>
-              <div class="progress-count">(${completedItems}/${totalItems})</div>
-              <div class="dropdown-arrow">▼</div>
-            </div>
-          `}
+          ${renderCategoryHeader(student.id, category, key, percentage, treatedItems, totalItems)}
         </div>
         <div id="section-${key}" class="training-content ${expanded ? 'expanded' : ''}">
           <div class="training-items">
