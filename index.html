@@ -7464,9 +7464,12 @@ function resetToDefaults() {
 
 // 🔄 UNIVERSELLE KATEGORIE-HEADER RENDERING-FUNKTION
 function renderCategoryHeader(studentId, category, key, percentage, treatedItems, totalItems) {
-  // BE-spezifische PS-Kreis-Anzahl - nur Zahlen ändern!
+  // BE-spezifische PS-Kreis-Anzahl - KORRIGIERT!
   if (currentClass === 'BE') {
-    if (key === 'uberlandfahrten') {
+    if (key === 'grundstufe' || key === 'aufbaustufe' || key === 'leistungsstufe' || key === 'grundfahraufgaben' || key === 'wichtige_fahraufgaben') {
+      // Grüne UE-Kreise für diese BE-Kategorien
+      return renderCategoryHeaderWithCircles(studentId, category, key, percentage, treatedItems, totalItems);
+    } else if (key === 'uberlandfahrten') {
       // Bundes-/Landstraßen: 3 PS-Kreise statt 5
       return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 3);
     } else if (key === 'autobahn') {
