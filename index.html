@@ -4487,8 +4487,8 @@ function calculateTreatedItems(student) {
 
   const progress = StorageManager.getProgressForStudent(student.id, currentClass);
   
-  Object.keys(TRAINING_CATEGORIES).forEach(categoryKey => {
-    const category = TRAINING_CATEGORIES[categoryKey];
+  Object.keys(getTrainingCategoriesForClass(currentClass)).forEach(categoryKey => {
+    const category = getTrainingCategoriesForClass(currentClass)[categoryKey];
     const categoryProgress = progress[categoryKey] || {};
 
     function countTreatedItems(sections) {
