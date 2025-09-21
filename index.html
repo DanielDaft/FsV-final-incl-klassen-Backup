@@ -7436,6 +7436,131 @@ function resetToDefaults() {
   console.log('🔄 Standard-Einstellungen wiederhergestellt');
 }
 
+// 🔄 UNIVERSELLE KATEGORIE-HEADER RENDERING-FUNKTION
+function renderCategoryHeader(studentId, category, key, percentage, treatedItems, totalItems) {
+  // Standard Klassen (B, A, usw.)
+  if (currentClass !== 'BE') {
+    if (key === 'grundstufe' || key === 'aufbaustufe' || key === 'leistungsstufe' || key === 'grundfahraufgaben') {
+      return renderCategoryHeaderWithCircles(studentId, category, key, percentage, treatedItems, totalItems);
+    } else if (key === 'uberlandfahrten') {
+      return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 5);
+    } else if (key === 'autobahn') {
+      return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 4);
+    } else if (key === 'dammerung_dunkelheit') {
+      return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 3);
+    } else {
+      return renderStandardHeader(category, percentage, treatedItems, totalItems);
+    }
+  }
+  
+  // BE-spezifische Kategorien
+  if (category.hasCircles) {
+    if (category.circleType === 'green') {
+      return renderBEHeaderWithGreenCircles(studentId, category, key, percentage, treatedItems, totalItems);
+    } else if (category.circleType === 'mixed') {
+      return renderBEHeaderWithMixedCircles(studentId, category, key, percentage, treatedItems, totalItems, category.psCircles);
+    }
+  }
+  
+  // Standard Header für BE ohne Kreise
+  return renderStandardHeader(category, percentage, treatedItems, totalItems);
+}
+
+// 📱 STANDARD HEADER (ohne Kreise)
+function renderStandardHeader(category, percentage, treatedItems, totalItems) {
+  return `
+    <div class="training-info-with-circles">
+      <div class="training-info">
+        <h3>${category.name}</h3>
+        ${category.subtitle ? `<div class="training-subtitle">${category.subtitle}</div>` : ''}
+      </div>
+    </div>
+    <div class="training-progress">
+      <div class="progress-circle"></div>
+      <div class="progress-text">${percentage}%</div>
+      <div class="progress-count">(${treatedItems}/${totalItems})</div>
+      <div class="dropdown-arrow">▼</div>
+    </div>
+  `;
+}
+
+// 🟢 BE HEADER MIT GRÜNEN KREISEN
+function renderBEHeaderWithGreenCircles(studentId, category, key, percentage, treatedItems, totalItems) {
+  const progress = StorageManager.getProgressForStudent(studentId, currentClass);
+  const beProgress = progress[`${key}_circles`] || {};
+  const currentCircles = beProgress.count || 0;
+
+  return `
+    <div class="training-info-with-circles">
+      <div class="training-info">
+        <h3>${category.name}</h3>
+        ${category.subtitle ? `<div class="training-subtitle">${category.subtitle}</div>` : ''}
+      </div>
+      <div class="grundstufe-circles">
+        <div class="circle-row">
+          ${renderBEGreenCircles(studentId, key, currentCircles)}
+          <button class="circle-btn green fill-0" onclick="addBECircle('${studentId}', '${key}')" title="Übung hinzufügen">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="training-progress">
+      <div class="progress-circle"></div>
+      <div class="progress-text">${percentage}%</div>
+      <div class="progress-count">(${treatedItems}/${totalItems})</div>
+      <div class="dropdown-arrow">▼</div>
+    </div>
+  `;
+}
+
+// 🔄 BE HEADER MIT GEMISCHTEN KREISEN (PS + Grün) 
+function renderBEHeaderWithMixedCircles(studentId, category, key, percentage, treatedItems, totalItems, psCount) {
+  const progress = StorageManager.getProgressForStudent(studentId, currentClass);
+  const beProgress = progress[`${key}_circles`] || {};
+  const psCircles = beProgress.ps || 0;
+  const greenCircles = beProgress.green || 0;
+
+  return `
+    <div class="training-info-with-circles">
+      <div class="training-info">
+        <h3>${category.name}</h3>
+        ${category.subtitle ? `<div class="training-subtitle">${category.subtitle}</div>` : ''}
+      </div>
+      <div class="grundstufe-circles">
+        <div class="circle-row">
+          ${renderBEPSCircles(studentId, key, psCircles, psCount)}
+          ${renderBEGreenCircles(studentId, key, greenCircles)}
+          <button class="circle-btn fill-0" onclick="addBEPSCircle('${studentId}', '${key}')" title="PS Fahrt hinzufügen" style="border-color: #dc2626; color: #dc2626;">PS</button>
+          <button class="circle-btn green fill-0" onclick="addBEGreenCircle('${studentId}', '${key}')" title="Übung hinzufügen">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="training-progress">
+      <div class="progress-circle"></div>
+      <div class="progress-text">${percentage}%</div>
+      <div class="progress-count">(${treatedItems}/${totalItems})</div>
+      <div class="dropdown-arrow">▼</div>
+    </div>
+  `;
+}
+
+// 🟢 GRÜNE KREISE FÜR BE RENDERN
+function renderBEGreenCircles(studentId, categoryKey, count) {
+  let circles = '';
+  for (let i = 0; i < count; i++) {
+    circles += `<div class="circle-btn green fill-100" onclick="removeBEGreenCircle('${studentId}', '${categoryKey}', ${i})" title="Übung entfernen"></div>`;
+  }
+  return circles;
+}
+
+// 🔴 PS-KREISE FÜR BE RENDERN  
+function renderBEPSCircles(studentId, categoryKey, count, maxCount) {
+  let circles = '';
+  for (let i = 0; i < Math.min(count, maxCount); i++) {
+    circles += `<div class="circle-btn fill-100" onclick="removeBEPSCircle('${studentId}', '${categoryKey}', ${i})" title="PS Fahrt entfernen" style="background-color: #dc2626; border-color: #dc2626; color: white;">PS</div>`;
+  }
+  return circles;
+}
+
 </script>
 </body>
 </html>
