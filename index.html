@@ -5670,36 +5670,31 @@ function updateCategoryHeaderOnly(studentId, categoryKey) {
   const [completedItems, totalItems] = [0, 0]; // Dummy values für Header
   const percentage = 0; // Dummy value für Header
   
-  let headerHtml;
-  
-  // 🚛 BE-KLASSE: Separate Logik auch für Updates!
-  if (currentClass === 'BE') {
-    if (categoryKey === 'grundstufe' || categoryKey === 'aufbaustufe' || categoryKey === 'leistungsstufe' || categoryKey === 'grundfahraufgaben' || categoryKey === 'wichtige_fahraufgaben') {
-      headerHtml = renderCategoryHeaderWithCircles(studentId, category, categoryKey, percentage, completedItems, totalItems);
-    } else if (categoryKey === 'uberlandfahrten') {
-      // BE: 3 PS-Kreise
-      headerHtml = renderBESpecialFahrtenHeader(studentId, category, categoryKey, percentage, completedItems, totalItems, 3);
-    } else if (categoryKey === 'autobahn') {
-      // BE: 1 PS-Kreis  
-      headerHtml = renderBESpecialFahrtenHeader(studentId, category, categoryKey, percentage, completedItems, totalItems, 1);
-    } else if (categoryKey === 'dammerung_dunkelheit') {
-      // BE: 1 PS-Kreis
-      headerHtml = renderBESpecialFahrtenHeader(studentId, category, categoryKey, percentage, completedItems, totalItems, 1);
-    } else {
-      headerHtml = renderStandardHeader(category, percentage, completedItems, totalItems);
-    }
-  }
-  // 🚗 ALLE ANDEREN KLASSEN: Original-Logik
-  else {
-    if (categoryKey === 'uberlandfahrten') {
-      headerHtml = renderSpecialFahrtenHeader(studentId, category, categoryKey, percentage, completedItems, totalItems, 5);
-    } else if (categoryKey === 'autobahn') {
-      headerHtml = renderSpecialFahrtenHeader(studentId, category, categoryKey, percentage, completedItems, totalItems, 4);
-    } else if (categoryKey === 'dammerung_dunkelheit') {
-      headerHtml = renderSpecialFahrtenHeader(studentId, category, categoryKey, percentage, completedItems, totalItems, 3);
-    } else {
-      headerHtml = renderCategoryHeaderWithCircles(studentId, category, categoryKey, percentage, completedItems, totalItems);
-    }
+  // 📱 AUCH HIER: REINER ROUTER FÜR UPDATES - KEINE EIGENE LOGIK!
+  switch(currentClass) {
+    case 'B':
+      headerHtml = renderBCategoryHeader(studentId, category, categoryKey, percentage, completedItems, totalItems);
+      break;
+    case 'A':
+    case 'A1':
+    case 'A2':
+      headerHtml = renderACategoryHeader(studentId, category, categoryKey, percentage, completedItems, totalItems);
+      break;
+    case 'BE':
+      headerHtml = renderBECategoryHeader(studentId, category, categoryKey, percentage, completedItems, totalItems);
+      break;
+    case 'C':
+    case 'C1':
+    case 'C1E':
+      headerHtml = renderCCategoryHeader(studentId, category, categoryKey, percentage, completedItems, totalItems);
+      break;
+    case 'CE':
+      headerHtml = renderCECategoryHeader(studentId, category, categoryKey, percentage, completedItems, totalItems);
+      break;
+    default:
+      // Fallback
+      headerHtml = renderBCategoryHeader(studentId, category, categoryKey, percentage, completedItems, totalItems);
+      break;
   }
   
   const headerElement = document.querySelector(`.training-header.${categoryKey}`);
