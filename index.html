@@ -5653,7 +5653,7 @@ function toggleCategoryQuarterCircle(studentId, categoryKey, index) {
 }
 
 function updateCategoryHeaderOnly(studentId, categoryKey) {
-  const category = TRAINING_CATEGORIES[categoryKey];
+  const category = getTrainingCategoriesForClass(currentClass)[categoryKey];
   if (!category) return;
   
   const progress = StorageManager.getProgressForStudent(studentId, currentClass);
