@@ -142,8 +142,7 @@ metadata:
   run_ui: true
 
 test_plan:
-  current_focus:
-    - "Implement A-classes (A, A1, A2, AM) with specific categories and styling"
+  current_focus: []
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
