@@ -3297,182 +3297,142 @@ function getTrainingCategoriesForClass(className) {
   }
   
   if (className === 'A' || className === 'A1' || className === 'A2' || className === 'AM') {
-    // A-Klassen (Motorrad) mit spezifischen Kategorien
+    // A-Klassen (Motorrad) mit exakten Kategorien aus Ausbildungsdiagramm
     return {
       "grundstufe": {
         "name": "Grundstufe",
-        "subtitle": "Persönliche Voraussetzungen und Verkehrsverhalten", 
+        "subtitle": "Balance-Übungen und Grundlagen", 
         "color": "#F59E0B",
         "sections": {
-          "persoenliche_voraussetzungen": {
-            "name": "Persönliche Voraussetzungen",
-            "items": ["Körperliche Fähigkeiten", "Einschränkungen", "Alkohol und Drogen", "Emotionen im Straßenverkehr"]
+          "balance_uebungen": {
+            "name": "Balance-Übungen",
+            "items": ["Im Stand", "Schieben", "Schieben und dosiertes Bremsen", "Schieben einer Links- und Rechtskurve", "Rückwärtsschieben", "Auf- und Abbocken", "Seitenständer", "Auf- und Absteigen"]
           },
-          "risikofaktor_mensch": {
-            "name": "Risikofaktor Mensch",
-            "items": ["Beeinflussung des Verkehrsverhaltens", "Verkehrssituationen richtig bewerten", "Gefährdung anderer"]
+          "sitzposition": {
+            "name": "Sitzposition",
+            "items": ["Körperhaltung, Fußstellung, Handstellung, Spiegeleinstellung"]
           },
-          "rechtliche_rahmenbedingungen": {
-            "name": "Rechtliche Rahmenbedingungen",
-            "items": ["Führerschein und Fahrerlaubnis", "Fahrzeugpapiere", "Versicherungen", "Fahrzeugkontrolle"]
+          "handhabung": {
+            "name": "Handhabung",
+            "items": ["Starten", "1. Gang, Spiegel, Schulterblick, Blinker"]
           },
-          "verkehrszeichen": {
-            "name": "Verkehrszeichen und Verkehrseinrichtungen",
-            "items": ["Gefahrzeichen", "Vorschriftzeichen", "Richtzeichen", "Verkehrseinrichtungen", "Warnzeichen"]
-          },
-          "strassenverkehrssystem": {
-            "name": "Straßenverkehrssystem und seine Nutzung",
-            "items": ["Verkehrsräume", "Fahrbahnmarkierungen", "Verkehrsregelung", "Bahnübergänge"]
-          },
-          "vorfahrt": {
-            "name": "Vorfahrt",
-            "items": ["Grundregeln", "Verkehrszeichen", "Kreuzungen und Einmündungen", "Kreisverkehr"]
-          },
-          "verkehrsregelungen": {
-            "name": "Verkehrsregelungen/Bahnübergänge",
-            "items": ["Polizeibeamte", "Lichtzeichenanlagen", "Bahnübergänge", "Vorfahrt"]
-          },
-          "geschwindigkeit_abstand": {
-            "name": "Geschwindigkeit, Abstand und umweltschonende Fahrweise",
-            "items": ["Angepasste Geschwindigkeit", "Sicherheitsabstand", "Überholen", "Umweltbewusstes Fahren"]
-          },
-          "verkehrsbeobachtung": {
-            "name": "Verkehrsbeobachtung und Kommunikation im Straßenverkehr",
-            "items": ["Verkehrsbeobachtung", "Fahrerische Kommunikation", "Fahrerassistenzsysteme"]
-          },
-          "ruhender_verkehr": {
-            "name": "Ruhender Verkehr",
-            "items": ["Halten und Parken", "Ein- und Aussteigen", "Absichern liegen gebliebener Fahrzeuge"]
-          },
-          "besondere_situationen": {
-            "name": "Verhalten in besonderen Situationen",
-            "items": ["Verkehrsunfall", "Tunnelfahrten", "Fahren bei besonderen Witterungsverhältnissen", "Fahren im Ausland"]
-          },
-          "lebenslanges_lernen": {
-            "name": "Lebenslanges Lernen/Folgen von Verstößen",
-            "items": ["Punktesystem", "Aufbauseminare", "Medizinisch-psychologische Untersuchung", "Fahrverbot und Entziehung der Fahrerlaubnis"]
+          "anfahrt_anhalte": {
+            "name": "Anfahrt- und Anhalteübungen",
+            "items": ["Anfahren bis 2. Gang", "Anhalten/Leerlauf"]
           }
         }
       },
       
       "aufbaustufe": {
         "name": "Aufbaustufe",
-        "subtitle": "Fahrer/Fahrzeug/Umwelt",
+        "subtitle": "Übungen im instabilen und eigenstabilen Bereich",
         "color": "#DC2626",
         "sections": {
-          "fahrer_beifahrer": {
-            "name": "Fahrer/Beifahrer, Fahrzeug",
-            "items": ["Fahrzeugkontrolle", "Wartung und Pflege", "Untersuchungen", "Bereifung"]
+          "instabil_uebungen": {
+            "name": "Übungen im Instabilen Bereich",
+            "items": ["Schrittgeschwindigkeit (GF)", "Stop and Go (GF)", "Slalom in Schrittgeschwindigkeit (GF)", "Anfahren links/rechts mit Lenkeinschlag", "Wenden"]
           },
-          "fahrzeugbedienung": {
-            "name": "Fahrzeugbedienung, Umweltbewusster Umgang mit Kraftfahrzeugen",
-            "items": ["Bedienungseinrichtungen", "Kontrollinstrumente", "Wirtschaftliche Fahrweise", "Umweltschonende Fahrweise"]
+          "eigenstabil_uebungen": {
+            "name": "Übungen im eigenstabilen Bereich",
+            "items": ["Slalom gleich (GF) ungleich (GF)", "Kreisfahren", "Bremsen 30 km/h", "Fußbremse, Handbremse", "Hand- und Fußbremse"]
           },
-          "verkehrsverhalten_witterung": {
-            "name": "Verkehrsverhalten bei ungünstigen Witterungs- und Straßenverhältnissen",
-            "items": ["Sicht- und Wetterverhältnisse", "Bodenhaftung und Reibung", "Aquaplaning", "Fahren bei Schnee und Eis"]
+          "beschleunigen_schalten": {
+            "name": "Beschleunigen - Schalten",
+            "items": ["Hoch/runter", "Durchschalten/Stopp", "Durchschalten/Weiterfahren"]
           },
-          "beladung_transport": {
-            "name": "Beladung, Personen- und Güterbeförderung",
-            "items": ["Zuladung", "Ladungssicherung", "Personenbeförderung", "Fahrzeugabmessungen"]
+          "bremsen": {
+            "name": "Bremsen",
+            "items": ["Zunehmende Kraft", "Halten blockiert (50 km/h)"]
           },
-          "fahren_sozialverhalten": {
-            "name": "Fahren mit Sozialverhalten und Umweltbewusstsein",
-            "items": ["Partnerschaftliches Verhalten", "Verhalten gegenüber schwächeren Verkehrsteilnehmern", "Umweltbewusstes Fahren", "Fahren in der Gruppe"]
+          "vollbremsung": {
+            "name": "Vollbremsung",
+            "items": ["50 km/h/(40) 40 km/h (GF)"]
           },
-          "verkehrsverhalten_manoever": {
-            "name": "Verkehrsverhalten bei Fahrmanövern, Verkehrsbeobachtung",
-            "items": ["Anfahren", "Nebeneinanderfahren", "Vorbeifahren", "Überholen", "Abbiegen", "Wenden und Rückwärtsfahren"]
+          "ausweichen": {
+            "name": "Ausweichen",
+            "items": ["ohne Bremsen (GF)", "nach Bremsen (GF)"]
           },
-          "andere_verkehrsteilnehmer": {
-            "name": "Andere Verkehrsteilnehmer im Straßenverkehr: Besonderheiten und Verhalten",
-            "items": ["Öffentliche Verkehrsmittel", "Pkw und Motorrad", "Große und schwere Fahrzeuge", "Radfahrer", "Fußgänger", "Kinder", "Ältere und behinderte Menschen"]
+          "steigung_gefaelle": {
+            "name": "Steigung und Gefälle",
+            "items": ["Anfahren, bremsen", "Wenden, Schalten"]
           }
         }
       },
       
       "leistungsstufe": {
         "name": "Leistungsstufe",
-        "subtitle": "Fahrzeugtechnik und Fahrphysik",
+        "subtitle": "Verkehrsverhalten und besondere Situationen",
         "color": "#DC2626",
         "sections": {
-          "fahrassistenzsysteme": {
-            "name": "Fahrassistenzsysteme, automatisiertes Fahren",
-            "items": ["Fahrassistenzsysteme", "Automatisiertes Fahren", "Grenzen der Technik"]
+          "an_einfahren": {
+            "name": "An- und Einfahren",
+            "items": ["Fahrstreifenbenutzung", "Umweltschonendes Fahren"]
           },
-          "fahrphysik_beladung": {
-            "name": "Fahrphysik: Beladung und Gewichtsverteilung",
-            "items": ["Gewichtsverteilung", "Schwerpunkt", "Beladung", "Fahrstabilität"]
+          "geschwindigkeit_abstaende": {
+            "name": "Anpassen der Geschwindigkeit",
+            "items": ["Anpassen der Geschwindigkeit"]
           },
-          "fahrphysik_eigenschaften": {
-            "name": "Fahrphysik: Fahrzeugbedienung",
-            "items": ["Motorbremse", "Fahrwiderstände", "Beschleunigung", "Kurvenfahrt"]
+          "sicherheitsabstaende": {
+            "name": "Sicherheitsabstände",
+            "items": ["Sicherheitsabstände"]
           },
-          "fahrbahnveraenderungen": {
-            "name": "Fahren bei Fahrbahnveränderungen, Fahrbahn \"lesen\"",
-            "items": ["Fahrbahnbeschaffenheit", "Straßenschäden", "Baustellenbereiche", "Fahrbahnmarkierungen"]
+          "verkehrsbeobachtung": {
+            "name": "Verkehrsbeobachtung",
+            "items": ["Verkehrsbeobachtung"]
           },
-          "bremsen": {
-            "name": "Bremsen",
-            "items": ["Bremsweg", "Gefahrenbremsung", "Blockierverhalten", "ABS"]
+          "fahrstreifenwechsel": {
+            "name": "Fahrstreifenwechsel",
+            "items": ["Fahrstreifenwechsel"]
           },
-          "ausweichen": {
-            "name": "Ausweichen",
-            "items": ["Ausweichmanöver", "Lenkimpuls", "Fahrzeugstabilität", "ESC"]
+          "kreuzungen_einmuendungen": {
+            "name": "Kreuzungen/Einmündungen",
+            "items": ["heranfahren und überqueren"]
           },
-          "anhalten": {
-            "name": "Anhalten",
-            "items": ["Anhalteweg", "Bremsvorgang", "Zielbremsung", "Notbremsung"]
+          "einordnen_abbiegen": {
+            "name": "Einordnen/Abbiegen",
+            "items": ["nach rechts", "nach links", "Abknickende Vorfahrt", "Einbahnstraße"]
           },
-          "umweltschonend": {
-            "name": "Umweltschonende Fahrweise",
-            "items": ["Kraftstoffverbrauch", "Emissionen", "Vorausschauendes Fahren", "Eco-Mode"]
-          },
-          "vorausschauend": {
-            "name": "Vorausschauendes Fahren",
-            "items": ["Blickschulung", "Gefahrenerkennung", "Defensive Fahrweise", "Fahrstrategie"]
-          },
-          "autobahn_kraftfahrstrasse": {
-            "name": "Autobahn und Kraftfahrstraße",
-            "items": ["Auffahrt", "Einfädeln", "Spurwechsel", "Abfahrt", "Überholen", "Geschwindigkeit"]
+          "besondere_situationen": {
+            "name": "Besondere Verkehrssituationen",
+            "items": ["Bahnübergang", "Öffentliche Verkehrsmittel", "30 - Zonen", "Fußgängerüberwege", "Kinder, Behinderte, Ältere"]
           }
         }
       },
       
       "uberlandfahrten": {
-        "name": "Überland",
+        "name": "Überlandfahrt",
         "subtitle": "Besondere Ausbildungsfahrten",
         "color": "#EAB308",
         "sections": {
-          "bundes_landstrassen": {
-            "name": "Bundes- und Landstraßen",
-            "items": ["Geschwindigkeit und Abstand", "Überholen", "Kurvenfahrt", "Bergauf/Bergab"]
+          "ueberlandfahrt": {
+            "name": "Überlandfahrt",
+            "items": ["Geschwindigkeit, Abstand, Blickschulung", "Kreuzungen/Einmündungen a.g.O.", "Kurven", "Überholen", "Steigungen", "Gefälle", "Einfahren i.g.O.", "Fahren nach Wegweiser", "Umweltschonende Fahrweise"]
           }
         },
         "psCircles": 5
       },
       
       "autobahn": {
-        "name": "Autobahn",
+        "name": "Autobahnfahrt",
         "subtitle": "Besondere Ausbildungsfahrten",
         "color": "#EAB308",
         "sections": {
-          "autobahn_kraftfahrstrasse": {
-            "name": "Autobahn und Kraftfahrstraße",
-            "items": ["Auffahrt", "Einfädeln", "Spurwechsel", "Abfahrt", "Überholen"]
+          "autobahnfahrt": {
+            "name": "Autobahnfahrt",
+            "items": ["Einfahren Beschleunigungsstreifen", "Abstand", "Fahrstreifenwechsel", "Überholen", "Richtgeschwindigkeit", "Park-/Rastplätze", "Verhalten bei Unfällen/Notrufssäule", "Umweltschonendes Fahren", "Verhalten bei dichtem Verkehr", "Verlassen/Verzögerungsstreifen"]
           }
         },
         "psCircles": 4
       },
       
       "dammerung_dunkelheit": {
-        "name": "Dämmerung/Dunkelheit",
+        "name": "Nachtfahrt",
         "subtitle": "Besondere Ausbildungsfahrten",
         "color": "#EAB308",
         "sections": {
-          "daemmerung_dunkelheit": {
-            "name": "Dämmerung und Dunkelheit",
-            "items": ["Beleuchtung", "Sichtverhältnisse", "Blendung", "Geschwindigkeit"]
+          "nachtfahrt": {
+            "name": "Nachtfahrt",
+            "items": ["Beleuchtungseinrichtungen", "Fahren i.g.O.", "Fahren a.g.O.", "Parken", "Auf-/Abblenden", "Schwelle - Fahrgeschwindigkeit", "Lärmschutz"]
           }
         },
         "psCircles": 3
