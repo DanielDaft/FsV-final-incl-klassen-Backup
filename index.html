@@ -7841,7 +7841,7 @@ function renderBCategoryHeader(studentId, category, key, percentage, treatedItem
 
 // 🏍️ KLASSE-A-SPEZIFISCHE LOGIK (KOPIE VON B)
 function renderACategoryHeader(studentId, category, key, percentage, treatedItems, totalItems) {
-  if (key === 'grundstufe' || key === 'aufbaustufe' || key === 'leistungsstufe' || key === 'grundfahraufgaben') {
+  if (key === 'grundstufe' || key === 'aufbaustufe' || key === 'leistungsstufe' || key === 'grundfahraufgaben' || key === 'reifestufe') {
     return renderCategoryHeaderWithCircles(studentId, category, key, percentage, treatedItems, totalItems);
   } else if (key === 'uberlandfahrten') {
     return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 5);
