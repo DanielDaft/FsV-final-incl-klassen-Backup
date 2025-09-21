@@ -5226,7 +5226,7 @@ function renderTrainingItems(sections, categoryKey, studentId) {
   const comments = getCommentsForStudent(studentId);
   
   // Hole die Kategorie-Farbe
-  const category = TRAINING_CATEGORIES[categoryKey];
+  const category = getTrainingCategoriesForClass(currentClass)[categoryKey];
   const categoryColor = category ? category.color : '#6b7280';
 
   function renderSection(sections, level = 0) {
