@@ -7633,6 +7633,19 @@ function renderBECategoryHeader(studentId, category, key, percentage, treatedIte
 
 // 📱 HAUPT-ROUTER-FUNKTION (KEINE EIGENE LOGIK MEHR!)
 function renderCategoryHeader(studentId, category, key, percentage, treatedItems, totalItems) {
+  // 🔧 CURRENTCLASS-STABILISIERUNG - prüfe Schüler-Storage
+  if (!currentClass || currentClass === 'B') {
+    // Finde die richtige Klasse basierend auf dem Schüler
+    const classes = ['BE', 'A', 'A1', 'A2', 'B', 'C', 'C1', 'C1E', 'CE'];
+    for (let className of classes) {
+      const students = JSON.parse(localStorage.getItem(`fahrschul_students_${className}`) || '[]');
+      if (students.some(s => s.id === studentId)) {
+        currentClass = className;
+        break;
+      }
+    }
+  }
+  
   // 📱 REINER ROUTER - KEINE EIGENE LOGIK!
   switch(currentClass) {
     case 'B':
