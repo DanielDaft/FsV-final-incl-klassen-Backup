@@ -4553,8 +4553,8 @@ function calculateOverallProgress(student) {
   let totalItems = 0;
   let weightedCompletedPoints = 0; // Gewichtete Punkte statt einfache Zählung
 
-  Object.keys(TRAINING_CATEGORIES).forEach(categoryKey => {
-    const category = TRAINING_CATEGORIES[categoryKey];
+  Object.keys(getTrainingCategoriesForClass(currentClass)).forEach(categoryKey => {
+    const category = getTrainingCategoriesForClass(currentClass)[categoryKey];
     totalItems += countTotalItems(category.sections);
   });
 
