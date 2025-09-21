@@ -5151,7 +5151,7 @@ function renderTrainingProgress(student) {
     </div>
   `;
 
-  Object.entries(TRAINING_CATEGORIES).forEach(([key, category]) => {
+  Object.entries(getTrainingCategoriesForClass(currentClass)).forEach(([key, category]) => {
     const progress = StorageManager.getProgressForStudent(student.id, currentClass);
     const categoryProgress = progress[key] || {};
     
