@@ -4809,7 +4809,7 @@ function renderStudentList() {
 
   students.forEach(student => {
     const progress = calculateOverallProgress(student);
-    const totalItems = Object.values(TRAINING_CATEGORIES).reduce((sum, cat) => sum + countTotalItems(cat.sections), 0);
+    const totalItems = Object.values(getTrainingCategoriesForClass(currentClass)).reduce((sum, cat) => sum + countTotalItems(cat.sections), 0);
     const treatedItems = calculateTreatedItems(student); // ANZAHL BEHANDELTER ITEMS (ohne Gewichtung)
 
     html += `
