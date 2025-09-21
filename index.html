@@ -7481,23 +7481,17 @@ function resetToDefaults() {
 
 // 🔄 UNIVERSELLE KATEGORIE-HEADER RENDERING-FUNKTION
 function renderCategoryHeader(studentId, category, key, percentage, treatedItems, totalItems) {
-  // BE-spezifische Kategorien - EXAKT wie Klasse B, nur andere Zahlen
+  // BE-spezifische PS-Kreis-Anzahl
   if (currentClass === 'BE') {
-    if (key === 'kennenlernen_anhanger') {
-      // Nur grüne Kreise wie "grundstufe" in Klasse B
-      return renderCategoryHeaderWithCircles(studentId, category, key, percentage, treatedItems, totalItems);
-    } else if (key === 'bundes_landstrassen') {
-      // 3 PS-Kreise (wie uberlandfahrten aber 3 statt 5)
+    if (key === 'uberlandfahrten') {
+      // Bundes-/Landstraßen: 3 PS-Kreise statt 5
       return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 3);
+    } else if (key === 'autobahn') {
+      // Autobahnen: 1 PS-Kreis statt 4
+      return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 1);
     } else if (key === 'dammerung_dunkelheit') {
-      // 1 PS-Kreis statt 3
+      // Dämmerung: 1 PS-Kreis statt 3
       return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 1);
-    } else if (key === 'autobahnen') {
-      // 1 PS-Kreis (wie autobahn aber 1 statt 4)  
-      return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 1);
-    } else {
-      // Standard Header für BE ohne Kreise
-      return renderStandardHeader(category, percentage, treatedItems, totalItems);
     }
   }
   
