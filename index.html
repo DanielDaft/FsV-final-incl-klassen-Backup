@@ -3217,7 +3217,24 @@ const DEMO_STUDENTS = [];
 // FUNKTION: Kategorien für spezifische Klassen abrufen
 function getTrainingCategoriesForClass(className) {
   if (className === 'BE') {
-    return BE_TRAINING_CATEGORIES;
+    // BE verwendet die B-Struktur, aber mit anderen Texten und PS-Zahlen
+    const beCategories = JSON.parse(JSON.stringify(TRAINING_CATEGORIES)); // Kopie von B
+    
+    // Ändere nur die Texte und Inhalte für BE:
+    beCategories.uberlandfahrten.name = "Ausbildung auf Bundes- oder Landstraßen"; 
+    beCategories.uberlandfahrten.subtitle = "Geschwindigkeit und Abstand, Befahren unterschiedlich breiter Außerortsstraßen";
+    
+    beCategories.autobahn.name = "Ausbildung auf Autobahnen";
+    beCategories.autobahn.subtitle = "Einfahren in die Autobahn";
+    
+    beCategories.dammerung_dunkelheit.name = "Ausbildung bei Dämmerung oder Dunkelheit";
+    beCategories.dammerung_dunkelheit.subtitle = "Bedienung und Überprüfung der Fahrzeugbeleuchtung";
+    
+    // Füge BE-spezifische Kategorie für "Kennenlernen" hinzu
+    beCategories.grundstufe.name = "Kennenlernen des Anhängers, Zusammenstellen der Kombination";
+    beCategories.grundstufe.subtitle = "Grundlagen der Anhänger-Kombination";
+    
+    return beCategories;
   }
   // Für alle anderen Klassen die Standard-Kategorien
   return TRAINING_CATEGORIES;
