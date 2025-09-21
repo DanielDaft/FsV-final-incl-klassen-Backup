@@ -6100,7 +6100,7 @@ function toggleProgressItem(studentId, categoryKey, sectionKey, itemKey, event) 
 }
 
 function updateCategoryProgress(categoryKey, studentId) {
-  const category = TRAINING_CATEGORIES[categoryKey];
+  const category = getTrainingCategoriesForClass(currentClass)[categoryKey];
   if (!category) return;
 
   const progress = StorageManager.getProgressForStudent(studentId, currentClass);
