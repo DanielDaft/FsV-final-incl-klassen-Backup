@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "In der 'Wichtige Fahraufgaben' Kategorie wurden grüne Kreise implementiert, jedoch werden sie in der Gesamtübersicht nicht mit in die Gesamtzählung einbezogen."
+user_problem_statement: "Implementierung der A-Klassen (AM, A1, A2, A) mit spezifischen Kategorien, Banner-Farben und PS-Stunden (Überland 5, Autobahn 4, Dämmerung 3)"
 
 frontend:
   - task: "Fix missing wichtige_fahraufgaben in total UE circle count"
@@ -119,6 +119,18 @@ frontend:
         - working: true
           agent: "testing"
           comment: "VERIFIED: Successfully tested the German driving school app on http://localhost:8080. Created BE class student and confirmed that 'Wichtige Fahraufgaben' section is present in the training interface. Code verification confirms that 'wichtige_fahraufgaben' is correctly included in the allCategories array in both renderGesamtFortschritt (line 5023) and generatePrintSummary (line 5969) functions. The fix is properly implemented and UE circles from Wichtige Fahraufgaben category will now be counted in the total UE circle count. The app loads correctly, student creation works, and the training interface displays all categories including Wichtige Fahraufgaben with functional UE circle addition buttons."
+  
+  - task: "Implement A-classes (A, A1, A2, AM) with specific categories and styling"
+    implemented: true
+    working: false
+    file: "/app/index.html"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+        - working: false
+          agent: "main"
+          comment: "Added A-class categories to getTrainingCategoriesForClass function with Grundstufe (Orange), Aufbaustufe (Red), Leistungsstufe (Red), and special driving categories (Yellow). Added CSS banner colors for all A-classes. Extended routing logic to include AM class. PS circles configured as: Überland 5, Autobahn 4, Dämmerung/Dunkelheit 3."
 
 metadata:
   created_by: "main_agent"
