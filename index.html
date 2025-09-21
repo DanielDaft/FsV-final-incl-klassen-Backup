@@ -7638,22 +7638,25 @@ function renderBECategoryHeader(studentId, category, key, percentage, treatedIte
 
 // 📱 HAUPT-ROUTER-FUNKTION (KEINE EIGENE LOGIK MEHR!)
 function renderCategoryHeader(studentId, category, key, percentage, treatedItems, totalItems) {
-  // 🚛 BE-KLASSE: Eigene separate Logik
-  if (currentClass === 'BE') {
-    return renderBECategoryHeader(studentId, category, key, percentage, treatedItems, totalItems);
-  }
-  
-  // 🚗 ALLE ANDEREN KLASSEN (B, A, C, etc.): Original-Logik
-  if (key === 'grundstufe' || key === 'aufbaustufe' || key === 'leistungsstufe' || key === 'grundfahraufgaben') {
-    return renderCategoryHeaderWithCircles(studentId, category, key, percentage, treatedItems, totalItems);
-  } else if (key === 'uberlandfahrten') {
-    return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 5);
-  } else if (key === 'autobahn') {
-    return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 4);
-  } else if (key === 'dammerung_dunkelheit') {
-    return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 3);
-  } else {
-    return renderStandardHeader(category, percentage, treatedItems, totalItems);
+  // 📱 REINER ROUTER - KEINE EIGENE LOGIK!
+  switch(currentClass) {
+    case 'B':
+      return renderBCategoryHeader(studentId, category, key, percentage, treatedItems, totalItems);
+    case 'A':
+    case 'A1': 
+    case 'A2':
+      return renderACategoryHeader(studentId, category, key, percentage, treatedItems, totalItems);
+    case 'BE':
+      return renderBECategoryHeader(studentId, category, key, percentage, treatedItems, totalItems);
+    case 'C':
+    case 'C1':
+    case 'C1E':
+      return renderCCategoryHeader(studentId, category, key, percentage, treatedItems, totalItems);
+    case 'CE':
+      return renderCECategoryHeader(studentId, category, key, percentage, treatedItems, totalItems);
+    default:
+      // Fallback für unbekannte Klassen - verwende B-Logik
+      return renderBCategoryHeader(studentId, category, key, percentage, treatedItems, totalItems);
   }
 }
 
