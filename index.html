@@ -5966,7 +5966,7 @@ function generatePrintSummary(studentId) {
   
   // Sammle alle UE-Kreise
   let totalUECircles = 0;
-  const allCategories = ['grundstufe', 'aufbaustufe', 'leistungsstufe', 'grundfahraufgaben', 'uberlandfahrten', 'autobahn', 'dammerung_dunkelheit'];
+  const allCategories = ['grundstufe', 'aufbaustufe', 'leistungsstufe', 'grundfahraufgaben', 'wichtige_fahraufgaben', 'uberlandfahrten', 'autobahn', 'dammerung_dunkelheit'];
   
   allCategories.forEach(categoryKey => {
     const ueCircles = progress[`${categoryKey}_header_ue`] || [];
