@@ -7475,32 +7475,31 @@ function resetToDefaults() {
 
 // 🔄 UNIVERSELLE KATEGORIE-HEADER RENDERING-FUNKTION
 function renderCategoryHeader(studentId, category, key, percentage, treatedItems, totalItems) {
+  // BE-spezifische Kategorien ZUERST prüfen
+  if (currentClass === 'BE') {
+    if (category.hasCircles) {
+      if (category.circleType === 'green') {
+        return renderBEHeaderWithGreenCircles(studentId, category, key, percentage, treatedItems, totalItems);
+      } else if (category.circleType === 'mixed') {
+        return renderBEHeaderWithMixedCircles(studentId, category, key, percentage, treatedItems, totalItems, category.psCircles);
+      }
+    }
+    // Standard Header für BE ohne Kreise
+    return renderStandardHeader(category, percentage, treatedItems, totalItems);
+  }
+  
   // Standard Klassen (B, A, usw.)
-  if (currentClass !== 'BE') {
-    if (key === 'grundstufe' || key === 'aufbaustufe' || key === 'leistungsstufe' || key === 'grundfahraufgaben') {
-      return renderCategoryHeaderWithCircles(studentId, category, key, percentage, treatedItems, totalItems);
-    } else if (key === 'uberlandfahrten') {
-      return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 5);
-    } else if (key === 'autobahn') {
-      return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 4);
-    } else if (key === 'dammerung_dunkelheit') {
-      return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 3);
-    } else {
-      return renderStandardHeader(category, percentage, treatedItems, totalItems);
-    }
+  if (key === 'grundstufe' || key === 'aufbaustufe' || key === 'leistungsstufe' || key === 'grundfahraufgaben') {
+    return renderCategoryHeaderWithCircles(studentId, category, key, percentage, treatedItems, totalItems);
+  } else if (key === 'uberlandfahrten') {
+    return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 5);
+  } else if (key === 'autobahn') {
+    return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 4);
+  } else if (key === 'dammerung_dunkelheit') {
+    return renderSpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 3);
+  } else {
+    return renderStandardHeader(category, percentage, treatedItems, totalItems);
   }
-  
-  // BE-spezifische Kategorien
-  if (category.hasCircles) {
-    if (category.circleType === 'green') {
-      return renderBEHeaderWithGreenCircles(studentId, category, key, percentage, treatedItems, totalItems);
-    } else if (category.circleType === 'mixed') {
-      return renderBEHeaderWithMixedCircles(studentId, category, key, percentage, treatedItems, totalItems, category.psCircles);
-    }
-  }
-  
-  // Standard Header für BE ohne Kreise
-  return renderStandardHeader(category, percentage, treatedItems, totalItems);
 }
 
 // 📱 STANDARD HEADER (ohne Kreise)
