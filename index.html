@@ -1398,41 +1398,50 @@ flex: 0 0 auto; /* Text nimmt nur benötigten Platz */
 border-left-color: #f59e0b;
 }
 
-/* BE-SPEZIFISCHE BANNER-FARBEN */
-.training-header.grundstufe {
-border-left-color: #F59E0B; /* Braun/Orange - Kennenlernen des Anhängers */
+/* BANNER-FARBEN NUR FÜR KLASSE BE */
+body[data-current-class="BE"] .training-header.grundstufe,
+[data-class="BE"] .training-header.grundstufe {
+border-left-color: #F59E0B !important; /* Braun/Orange - Kennenlernen des Anhängers */
 }
 
-.training-header.aufbaustufe {
-border-left-color: #F59E0B; /* Braun/Orange - Verbinden und Trennen */
+body[data-current-class="BE"] .training-header.aufbaustufe,
+[data-class="BE"] .training-header.aufbaustufe {
+border-left-color: #F59E0B !important; /* Braun/Orange - Verbinden und Trennen */
 }
 
-.training-header.leistungsstufe {
-border-left-color: #F59E0B; /* Braun/Orange - Fahrzeugbedienung */
+body[data-current-class="BE"] .training-header.leistungsstufe,
+[data-class="BE"] .training-header.leistungsstufe {
+border-left-color: #F59E0B !important; /* Braun/Orange - Fahrzeugbedienung */
 }
 
-.training-header.grundfahraufgaben {
-border-left-color: #22C55E; /* Grün - Grundfahraufgabe */
+body[data-current-class="BE"] .training-header.grundfahraufgaben,
+[data-class="BE"] .training-header.grundfahraufgaben {
+border-left-color: #22C55E !important; /* Grün - Grundfahraufgabe */
 }
 
-.training-header.wichtige_fahraufgaben {
-border-left-color: #3B82F6; /* Blau - Wichtige Fahraufgaben */
+body[data-current-class="BE"] .training-header.wichtige_fahraufgaben,
+[data-class="BE"] .training-header.wichtige_fahraufgaben {
+border-left-color: #3B82F6 !important; /* Blau - Wichtige Fahraufgaben */
 }
 
-.training-header.uberlandfahrten {
-border-left-color: #8B5CF6; /* Lila - Bundes-/Landstraßen */
+body[data-current-class="BE"] .training-header.uberlandfahrten,
+[data-class="BE"] .training-header.uberlandfahrten {
+border-left-color: #8B5CF6 !important; /* Lila - Bundes-/Landstraßen */
 }
 
-.training-header.dammerung_dunkelheit {
-border-left-color: #F97316; /* Orange - Dämmerung/Dunkelheit */
+body[data-current-class="BE"] .training-header.dammerung_dunkelheit,
+[data-class="BE"] .training-header.dammerung_dunkelheit {
+border-left-color: #F97316 !important; /* Orange - Dämmerung/Dunkelheit */
 }
 
-.training-header.autobahn {
-border-left-color: #06B6D4; /* Türkis - Autobahnen */
+body[data-current-class="BE"] .training-header.autobahn,
+[data-class="BE"] .training-header.autobahn {
+border-left-color: #06B6D4 !important; /* Türkis - Autobahnen */
 }
 
-.training-header.reife_teststufe {
-border-left-color: #EAB308; /* Gelb - Rückwärtsfahren */
+body[data-current-class="BE"] .training-header.reife_teststufe,
+[data-class="BE"] .training-header.reife_teststufe {
+border-left-color: #EAB308 !important; /* Gelb - Rückwärtsfahren */
 }
 
 /* EINHEITLICHES TRAINING HEADER LAYOUT FÜR ALLE KATEGORIEN */
