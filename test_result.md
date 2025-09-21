@@ -101,3 +101,35 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "In der 'Wichtige Fahraufgaben' Kategorie wurden grüne Kreise implementiert, jedoch werden sie in der Gesamtübersicht nicht mit in die Gesamtzählung einbezogen."
+
+frontend:
+  - task: "Fix missing wichtige_fahraufgaben in total UE circle count"
+    implemented: true
+    working: false
+    file: "/app/index.html"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+        - working: false
+          agent: "main"
+          comment: "Added 'wichtige_fahraufgaben' to allCategories list in both renderGesamtFortschritt and generatePrintSummary functions to include green UE circles from wichtige_fahraufgaben in total count"
+
+metadata:
+  created_by: "main_agent"
+  version: "1.0"
+  test_sequence: 1
+  run_ui: true
+
+test_plan:
+  current_focus:
+    - "Fix missing wichtige_fahraufgaben in total UE circle count"
+  stuck_tasks: []
+  test_all: false
+  test_priority: "high_first"
+
+agent_communication:
+    - agent: "main"
+      message: "Fixed the issue by adding 'wichtige_fahraufgaben' to the allCategories array in both renderGesamtFortschritt (line ~5023) and generatePrintSummary (line ~5969) functions. This ensures that green UE circles from the 'Wichtige Fahraufgaben' category are included in the total count in both the live overview and print summary. Need testing to verify the fix works correctly."
