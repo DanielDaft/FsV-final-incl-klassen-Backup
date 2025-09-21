@@ -7462,7 +7462,75 @@ function resetToDefaults() {
   console.log('🔄 Standard-Einstellungen wiederhergestellt');
 }
 
-// 🔄 UNIVERSELLE KATEGORIE-HEADER RENDERING-FUNKTION
+// 🚛 BE-SPEZIFISCHE RENDERING-FUNKTIONEN (SEPARATE LOGIK)
+
+// BE-spezifische Spezial-Fahrten Header mit korrekten PS-Zahlen
+function renderBESpecialFahrtenHeader(studentId, category, categoryKey, percentage, completedItems, totalItems, blueCircleCount) {
+  const progress = StorageManager.getProgressForStudent(studentId, currentClass);
+  const blueCircles = progress[`${categoryKey}_blue_circles`] || Array(blueCircleCount).fill(false);
+  const quarterCircles = progress[`${categoryKey}_header_quarters`] || [];
+
+  return `
+    <div class="training-info-with-circles">
+      <div class="training-info">
+        <h3>${category.name}</h3>
+        ${category.subtitle ? `<div class="training-subtitle">${category.subtitle}</div>` : ''}
+      </div>
+      <div class="grundstufe-circles" onclick="event.stopPropagation()">
+        <div class="circle-row">
+          ${blueCircles.map((filled, index) => `
+            <div class="ue-circle ${filled ? 'blue-filled' : 'blue-empty'}" onclick="event.stopPropagation(); toggleBlueCircle('${studentId}', '${categoryKey}', ${index})" title="${category.name} ${index + 1} - Klick zum Füllen/Leeren">
+              ${index + 1}
+            </div>
+          `).join('')}
+          <span style="margin-left: 8px; color: #3b82f6; font-weight: 600; font-size: 14px;">PS</span>
+        </div>
+        <div class="circle-row">
+          ${quarterCircles.map((fillLevel, index) => `
+            <div class="quarter-circle ${getFillLevelClass(fillLevel)}"
+                 onclick="event.stopPropagation(); toggleCategoryQuarterCircle('${studentId}', '${categoryKey}', ${index})"
+                 title="Klicken: 0% → 25% → 50% → 75% → Löschen"></div>
+          `).join('')}
+          <div class="add-circle-btn" onclick="event.stopPropagation(); addCategoryQuarterCircle('${studentId}', '${categoryKey}')" title="Viertel-Kreis hinzufügen">+</div>
+          ${quarterCircles.length > 0 ? '<span style="margin-left: 8px; color: #22c55e; font-weight: 600; font-size: 14px;">UE</span>' : ''}
+        </div>
+      </div>
+    </div>
+    <div class="training-progress">
+      <div class="progress-circle"></div>
+      <div class="progress-text">${percentage}%</div>
+      <div class="progress-count">(${completedItems}/${totalItems})</div>
+      <div class="dropdown-arrow">▼</div>
+    </div>
+  `;
+}
+
+// BE-spezifische Kategorie-Header Logik
+function renderBECategoryHeader(studentId, category, key, percentage, treatedItems, totalItems) {
+  // BE-spezifische Grüne Kreise
+  if (key === 'grundstufe' || key === 'aufbaustufe' || key === 'leistungsstufe' || key === 'grundfahraufgaben' || key === 'wichtige_fahraufgaben') {
+    return renderCategoryHeaderWithCircles(studentId, category, key, percentage, treatedItems, totalItems);
+  }
+  // BE-spezifische PS-Kreise mit KORREKTEN ZAHLEN
+  else if (key === 'uberlandfahrten') {
+    // Bundes-/Landstraßen: 3 PS-Kreise (nicht 5!)
+    return renderBESpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 3);
+  } 
+  else if (key === 'autobahn') {
+    // Autobahnen: 1 PS-Kreis (nicht 4!)
+    return renderBESpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 1);
+  } 
+  else if (key === 'dammerung_dunkelheit') {
+    // Dämmerung: 1 PS-Kreis (nicht 3!)
+    return renderBESpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 1);
+  }
+  // Alle anderen BE-Kategorien: Standard
+  else {
+    return renderStandardHeader(category, percentage, treatedItems, totalItems);
+  }
+}
+
+// HAUPT-KATEGORIE-HEADER FUNKTION - KLASSENSPEZIFISCH
 function renderCategoryHeader(studentId, category, key, percentage, treatedItems, totalItems) {
   // BE-spezifische PS-Kreis-Anzahl - KORRIGIERT!
   if (currentClass === 'BE') {
