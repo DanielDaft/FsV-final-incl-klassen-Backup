@@ -7618,8 +7618,8 @@ function renderBECategoryHeader(studentId, category, key, percentage, treatedIte
     return renderBESpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 3);
   } 
   else if (key === 'autobahn') {
-    // BE: 1 PS-Kreis (nicht 4!)
-    return renderBESpecialFahrtenHeader(studentId, category, key, percentage, treatedItems, totalItems, 1);
+    // 🔥 TEST: KEINE BLAUEN KREISE BEI AUTOBAHN!
+    return renderStandardHeader(category, percentage, treatedItems, totalItems);
   } 
   else if (key === 'dammerung_dunkelheit') {
     // BE: 1 PS-Kreis (nicht 3!)
