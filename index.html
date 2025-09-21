@@ -4280,6 +4280,10 @@ function getClassDescription(className) {
 function selectClass(className) {
   currentClass = className;
   currentView = 'studentList';
+  
+  // 🎨 Setze data-current-class für klassenspezifische CSS-Styles
+  document.body.setAttribute('data-current-class', className);
+  
   renderStudentList();
 }
 
