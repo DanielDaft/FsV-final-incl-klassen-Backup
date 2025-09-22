@@ -3318,7 +3318,208 @@ function getTrainingCategoriesForClass(className) {
     };
   }
   
-  if (className === 'A' || className === 'A1' || className === 'A2' || className === 'AM') {
+  if (className === 'AM') {
+    // AM-Klasse (Moped/Leichtmofa) - OHNE besondere Ausbildungsfahrten
+    return {
+      "grundstufe": {
+        "name": "Grundstufe",
+        "subtitle": "Balance-Übungen und Grundlagen", 
+        "color": "#F59E0B",
+        "sections": {
+          "balance_uebungen": {
+            "name": "Balance-Übungen",
+            "items": ["Im Stand", "Schieben", "Schieben und dosiertes Bremsen", "Schieben einer Links- und Rechtskurve", "Rückwärtsschieben", "Auf- und Abbocken", "Seitenständer", "Auf- und Absteigen"]
+          },
+          "sitzposition": {
+            "name": "Sitzposition",
+            "items": ["Körperhaltung, Fußstellung, Handstellung, Spiegeleinstellung"]
+          },
+          "handhabung": {
+            "name": "Handhabung",
+            "items": ["Starten", "1. Gang, Spiegel, Schulterblick, Blinker"]
+          },
+          "anfahrt_anhalte": {
+            "name": "Anfahrt- und Anhalteübungen",
+            "items": ["Anfahren bis 2. Gang", "Anhalten/Leerlauf"]
+          }
+        }
+      },
+      
+      "aufbaustufe": {
+        "name": "Aufbaustufe",
+        "subtitle": "Übungen im instabilen und eigenstabilen Bereich",
+        "color": "#F97316",
+        "sections": {
+          "instabil_uebungen": {
+            "name": "Übungen im Instabilen Bereich",
+            "items": ["Schrittgeschwindigkeit (GF)", "Stop and Go (GF)", "Slalom in Schrittgeschwindigkeit (GF)", "Anfahren links/rechts mit Lenkeinschlag", "Wenden"]
+          },
+          "eigenstabil_uebungen": {
+            "name": "Übungen im eigenstabilen Bereich",
+            "items": ["Slalom Gleich (GF)", "Slalom ungleich (GF)", "Kreisfahren"]
+          },
+          "bremsen_30": {
+            "name": "Bremsen 30 km/h",
+            "items": ["Fußbremse", "Handbremse", "Hand u. Fußbremse"]
+          },
+          "bremsen": {
+            "name": "Bremsen",
+            "items": ["Zunehmende Kraft", "Hinten blockiert (30 km/h)"]
+          },
+          "beschleunigen_schalten": {
+            "name": "Beschleunigen - Schalten",
+            "items": ["Hoch/runter", "Durchschalten/Stopp", "Durchschalten/Weiterfahren"]
+          },
+          "vollbremsung": {
+            "name": "Vollbremsung",
+            "items": ["50 km/h (M) 40 km/h (GF)"]
+          },
+          "ausweichen": {
+            "name": "Ausweichen",
+            "items": ["ohne Bremsen (GF)", "nach Bremsen (GF)"]
+          },
+          "steigung_gefaelle": {
+            "name": "Steigung und Gefälle",
+            "items": ["Anfahren", "bremsen", "Wenden", "Schalten"]
+          }
+        }
+      },
+      
+      "leistungsstufe": {
+        "name": "Leistungsstufe",
+        "subtitle": "Verkehrsverhalten und besondere Situationen",
+        "color": "#EF4444",
+        "sections": {
+          "an_einfahren": {
+            "name": "An- und Einfahren",
+            "items": ["Fahrstreifenbenutzung", "Umweltschonendes Fahren"]
+          },
+          "geschwindigkeit_abstaende": {
+            "name": "Anpassen der Geschwindigkeit",
+            "items": ["Anpassen der Geschwindigkeit"]
+          },
+          "sicherheitsabstaende": {
+            "name": "Sicherheitsabstände",
+            "items": ["Sicherheitsabstände"]
+          },
+          "verkehrsbeobachtung": {
+            "name": "Verkehrsbeobachtung",
+            "items": ["Verkehrsbeobachtung"]
+          },
+          "fahrstreifenwechsel": {
+            "name": "Fahrstreifenwechsel",
+            "items": ["Fahrstreifenwechsel"]
+          },
+          "kreuzungen_einmuendungen": {
+            "name": "Kreuzungen/Einmündungen",
+            "items": ["heranfahren und überqueren"]
+          },
+          "einordnen_abbiegen": {
+            "name": "Einordnen/Abbiegen",
+            "items": ["nach rechts", "nach links", "Abknickende Vorfahrt", "Einbahnstraße"]
+          },
+          "besondere_situationen": {
+            "name": "Besondere Verkehrssituationen",
+            "items": ["Bahnübergang", "Öffentliche Verkehrsmittel", "30 - Zonen", "Fußgängerüberwege", "Kinder, Behinderte, Ältere"]
+          }
+        }
+      },
+      
+      "reifestufe": {
+        "name": "Reifestufe",
+        "subtitle": "Testfahrt und Prüfungsvorbereitung",
+        "color": "#22C55E",
+        "sections": {
+          "testfahrt_pruefung": {
+            "name": "Testfahrt unter Prüfungsbedingungen",
+            "items": ["mit Einbeziehung der Grundfahraufgaben"]
+          },
+          "gezielte_uebungen": {
+            "name": "Gezielte Übungen und Korrekturen",
+            "items": ["nach dem Ergebnis der Testfahrt"]
+          },
+          "beruecksichtigung_fahrweise": {
+            "name": "Berücksichtigung",
+            "items": ["der umweltschonenden, verantwortungsbewussten und partnerschaftlichen Fahrweise"]
+          },
+          "fahrtechnische_vorbereitung": {
+            "name": "Fahrtechnische Vorbereitung",
+            "items": ["Fahrtechnische Vorbereitung"]
+          },
+          "sicherheitskontrolle": {
+            "name": "Sicherheitskontrolle",
+            "items": ["Sicherheitskontrolle"]
+          }
+        }
+      },
+      
+      "checkliste": {
+        "name": "Checkliste zur fahrtechnischen Vorbereitung",
+        "subtitle": "Sicherheitskontrollen vor Fahrtbeginn",
+        "color": "#06B6D4",
+        "sections": {
+          "beim_fahrzeug": {
+            "name": "BEIM FAHRZEUG",
+            "items": ["Überprüfung des ordnungsgemäßen Zustandes der Reifen", "Verschleiß (z.B. Beschädigungen, Profiltiefe)", "Reifendruck"]
+          },
+          "scheinwerfer_leuchten": {
+            "name": "Scheinwerfer, Leuchten, Blinker, Hupe",
+            "items": ["Ein- und Ausschalten"]
+          },
+          "funktion_pruefen": {
+            "name": "Funktion prüfen von",
+            "items": ["Standlicht", "Abblendlicht", "Fernlicht", "Nebelschlussleuchte", "Warnblinkanlage", "Blinker", "Hupe"]
+          },
+          "kontrollleuchten": {
+            "name": "Kontrollleuchten benennen",
+            "items": ["Kontrollleuchten benennen"]
+          },
+          "rueckstrahler": {
+            "name": "Rückstrahler",
+            "items": ["Vorhandensein", "Beschädigung"]
+          },
+          "lenkung": {
+            "name": "Lenkung",
+            "items": ["Lenkschloss entriegeln", "Erkennen des Lenkspiels"]
+          },
+          "bremsen_pruefen": {
+            "name": "Funktionsprüfung der Bremsen",
+            "items": ["Handbremse", "Fußbremse"]
+          },
+          "beim_fahrer": {
+            "name": "BEIM FAHRER (vor Fahrtbeginn)",
+            "items": ["Richtige Positionierung", "Einstellung der Rückspiegel", "Tragen des Schutzhelms"]
+          },
+          "zusaetzliche_kontrollen": {
+            "name": "ZUSÄTZLICHE KONTROLLEN AM FAHRZEUG (nicht prüfungsrelevant)",
+            "items": ["Flüssigkeitsstände kontrollieren"]
+          },
+          "fluessigkeiten": {
+            "name": "Flüssigkeitsstände",
+            "items": ["Kühlwasser", "Bremse", "Kupplung", "Motoröl", "Kraftstoff", "Batterie"]
+          },
+          "spiegel_bowdenzuege": {
+            "name": "Weitere Kontrollen",
+            "items": ["Spiegel", "Bowdenzüge"]
+          },
+          "lager": {
+            "name": "Lager",
+            "items": ["Lenkkopflager", "Schwingenlager", "Radlager"]
+          },
+          "antrieb": {
+            "name": "Kette/Zahnriemen",
+            "items": ["Kette/Zahnriemen"]
+          },
+          "kennzeichen": {
+            "name": "Kennzeichen/Prüfplakette",
+            "items": ["Kennzeichen/Prüfplakette"]
+          }
+        }
+      }
+    };
+  }
+  
+  if (className === 'A' || className === 'A1' || className === 'A2') {
     // A-Klassen (Motorrad) mit exakten Kategorien aus Ausbildungsdiagramm
     return {
       "grundstufe": {
