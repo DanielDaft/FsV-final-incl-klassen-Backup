@@ -6504,7 +6504,14 @@ function generatePrintSummary(studentId) {
   
   // Sammle alle UE-Kreise
   let totalUECircles = 0;
-  const allCategories = ['grundstufe', 'aufbaustufe', 'leistungsstufe', 'grundfahraufgaben', 'wichtige_fahraufgaben', 'reifestufe', 'uberlandfahrten', 'autobahn', 'dammerung_dunkelheit', 'checkliste'];
+  let allCategories;
+  
+  // AM-Klasse hat KEINE besonderen Ausbildungsfahrten
+  if (currentClass === 'AM') {
+    allCategories = ['grundstufe', 'aufbaustufe', 'leistungsstufe', 'grundfahraufgaben', 'reifestufe', 'checkliste'];
+  } else {
+    allCategories = ['grundstufe', 'aufbaustufe', 'leistungsstufe', 'grundfahraufgaben', 'wichtige_fahraufgaben', 'reifestufe', 'uberlandfahrten', 'autobahn', 'dammerung_dunkelheit', 'checkliste'];
+  }
   
   allCategories.forEach(categoryKey => {
     const ueCircles = progress[`${categoryKey}_header_ue`] || [];
