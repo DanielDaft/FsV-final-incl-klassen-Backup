@@ -8216,8 +8216,9 @@ function renderCategoryHeader(studentId, category, key, percentage, treatedItems
     case 'A':
     case 'A1': 
     case 'A2':
-    case 'AM':
       return renderACategoryHeader(studentId, category, key, percentage, treatedItems, totalItems);
+    case 'AM':
+      return renderAMCategoryHeader(studentId, category, key, percentage, treatedItems, totalItems);
     case 'BE':
       return renderBECategoryHeader(studentId, category, key, percentage, treatedItems, totalItems);
     case 'C':
