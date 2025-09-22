@@ -8116,6 +8116,15 @@ function renderBCategoryHeader(studentId, category, key, percentage, treatedItem
 }
 
 // 🏍️ KLASSE-A-SPEZIFISCHE LOGIK (KOPIE VON B)
+function renderAMCategoryHeader(studentId, category, key, percentage, treatedItems, totalItems) {
+  // AM-Klasse hat KEINE PS-Kreise (Überland, Autobahn, Nacht)
+  if (key === 'grundstufe' || key === 'aufbaustufe' || key === 'leistungsstufe' || key === 'grundfahraufgaben' || key === 'reifestufe' || key === 'checkliste') {
+    return renderCategoryHeaderWithCircles(studentId, category, key, percentage, treatedItems, totalItems);
+  } else {
+    return renderStandardHeader(category, percentage, treatedItems, totalItems);
+  }
+}
+
 function renderACategoryHeader(studentId, category, key, percentage, treatedItems, totalItems) {
   if (key === 'grundstufe' || key === 'aufbaustufe' || key === 'leistungsstufe' || key === 'grundfahraufgaben' || key === 'reifestufe' || key === 'checkliste') {
     return renderCategoryHeaderWithCircles(studentId, category, key, percentage, treatedItems, totalItems);
